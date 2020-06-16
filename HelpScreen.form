@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.MoneyTrackz.HelpScreen">
+  <grid id="27dc6" binding="helpPanel" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="0" left="0" bottom="0" right="0"/>
+    <constraints>
+      <xy x="20" y="20" width="500" height="19378"/>
+    </constraints>
+    <properties>
+      <background color="-16777216"/>
+      <font name="Comic Sans MS" size="14" style="0"/>
+      <foreground color="-16777066"/>
+    </properties>
+    <border type="line" title="Money Trackz">
+      <font name="Comic Sans MS" size="14" style="0"/>
+      <title-color color="-16777066"/>
+      <color color="-10223416"/>
+    </border>
+    <children>
+      <component id="d9552" class="javax.swing.JLabel" binding="helpLabel">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-16777216"/>
+          <font name="Comic Sans MS" size="25" style="2"/>
+          <foreground color="-16777066"/>
+          <text value="Help"/>
+        </properties>
+      </component>
+      <scrollpane id="fa0c5" binding="helpScrollPane">
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties/>
+        <border type="line"/>
+        <children>
+          <component id="c7a48" class="javax.swing.JTextArea" binding="helpTextArea">
+            <constraints/>
+            <properties>
+              <background color="-16777216"/>
+              <editable value="false"/>
+              <font name="Comic Sans MS" size="14" style="0"/>
+              <foreground color="-16777066"/>
+              <lineWrap value="true"/>
+              <text value="Welcome To Money Trackz&#10;Money Trackz is a finance tracking application that keeps track of your spending habits as well as saving habits and times one gains money whether from work or some other occasion.  &#10;&#10;How To Use: &#10;1. Enter the balance/sum of money you had at the beginning of the day in the Initial Balance Section.&#10;2. Enter the amount of money spent/gained in the Money Spent/Gained Section.&#10;3. Click the Spent/Gained Buttons to carry out the required action. After pressed, the Initial Balance Section is no longer editable and a report is provided in the buttom left corner.&#10;4. Click the Report Button for the final report.&#10;5. Click Light Mode Button to switch between darker and brighter screen mode.&#10;6. Click Help Screen Button to go to the help screen.&#10;&#10;ShortCuts:&#10;Tab: To go to next input text field.&#10;Shift+Tab: To go to previous input text field.&#10;Alt+S: Activates Spent Button. Alt+G: Activates Gained Button.&#10;Alt+R: Activates Report Button.&#10;Alt+L: Activates Light Mode Button.&#10;Alt+H: Activates Help Screen Button.  &#10;&#10;To exit the help screen to go to the main screen just click the 'x' key on the keyboard."/>
+              <wrapStyleWord value="true"/>
+            </properties>
+          </component>
+        </children>
+      </scrollpane>
+    </children>
+  </grid>
+</form>
