@@ -88,7 +88,7 @@ public class MainScreen extends Transaction{
 
     //Sets The Balance To Be The Same As The Initial Balance
     public void setBalance() {
-        if(getTransaction() < 1){
+        if(getTransactionNumber() < 1){
             String initialBalanceStr = initialBalanceTextField.getText();
             setInitialBalance(Double.parseDouble(initialBalanceStr));
             setBalance(Double.parseDouble(initialBalanceStr));
@@ -98,12 +98,15 @@ public class MainScreen extends Transaction{
     //Calculates The Money Spent, Total Money Spent and Losses and Total Loss If Made For Each Transaction
     public void calculateMoneySpent(){
         String moneySpentOrGainedStr = moneySpentOrGainedTextField.getText();
-        setMoneySpent(Double.parseDouble(moneySpentOrGainedStr));
+        setSpent(Double.parseDouble(moneySpentOrGainedStr));
         calculateBalanceSpent();
-        calculateTotalMoneySpent();
+        calculateTotalSpent();
         calculateLoss();
-        calculateTotalMoneyLost();
         calculateSaving();
+        calculateProfit();
+        increaseTransactionNumber();
+        setGain(0);
+        printReport();
     }
 
     //Calculates The Money Gained, Total Money Gained and Money Saved For Each Transaction
@@ -112,7 +115,12 @@ public class MainScreen extends Transaction{
         setGain(Double.parseDouble(moneySpentOrGainedStr));
         calculateBalanceGained();
         calculateTotalMoneyGained();
+        calculateLoss();
         calculateSaving();
+        calculateProfit();
+        increaseTransactionNumber();
+        setSpent(0);
+        printReport();
     }
 
     //Sets The Balance After Each Transaction
@@ -125,8 +133,7 @@ public class MainScreen extends Transaction{
 
     //Prints A Report After Each Transaction For The User To See
     public void printReport(){
-        increaseTransaction();
-        reportTextArea.setText(String.format("Report\n" + "Transaction: %d\nInitial Balance: $%.2f\nMoney Spent: $%.2f\nMoney Gained: $%.2f\nSaved: $%.2f\nLost: $%.2f\n", getTransaction(), getInitialBalance(), getMoneySpent(), getGain(), getSaving(), getLoss()));
+        reportTextArea.setText(String.format("Report\n" + "Transaction: %d\nInitial Balance: $%.2f\nMoney Spent: $%.2f\nMoney Gained: $%.2f\nSaved: $%.2f\nLost: $%.2f\nProfit: $%.2f\n", getTransactionNumber(), getInitialBalance(), getSpent(), getGain(), getSaving(), getLoss(), getProfit()));
     }
 
     //Writes The Final Report To Report.txt As Well As Opens It
@@ -149,13 +156,17 @@ public class MainScreen extends Transaction{
         dateLabel.setText(dateStr);
 
         //In Case The User Was On The Help Screen This Ensures The Previous Work Done Is Continued
-        if(getTransaction() >= 1){
+        if(getTransactionNumber() >= 1){
             balanceTextField.setText(String.format("%.2f", getBalance()));
             initialBalanceTextField.setText(String.format("%.2f", getInitialBalance()));
             initialBalanceTextField.setEditable(false);
         }
 
+        //Has Configuration For Light Mode
         lightMode();
+
+        //Prints Report
+        printReport();
 
         //Set Shortcuts To Buttons
         spentButton.setMnemonic(KeyEvent.VK_S);
@@ -171,7 +182,6 @@ public class MainScreen extends Transaction{
                 setBalance();
                 calculateMoneySpent();
                 setFinalBalance();
-                printReport();
             }
         });
         //Controls The Functions Of The Gained Button
@@ -181,7 +191,6 @@ public class MainScreen extends Transaction{
                 setBalance();
                 calculateMoneyGained();
                 setFinalBalance();
-                printReport();
             }
         });
         //Controls The Functions Of The Report Button
